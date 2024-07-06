@@ -8,11 +8,12 @@ import { usePatientStore } from '../store';
 
 export const PatientForm = () => {
     const { addPatient } = usePatientStore();
-    const { register, handleSubmit, formState: { errors } } = useForm<DrafPatient>();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<DrafPatient>();
 
 
     const registerPatient = ( data:DrafPatient ) => {
         addPatient( {...data} );
+        reset()
     }
 
 

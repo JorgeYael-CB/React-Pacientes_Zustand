@@ -7,6 +7,7 @@ import { v4 as uuid } from 'uuid';
 type PatientState = {
   patients: Patient[];
   addPatient: ( data:DrafPatient ) => void;
+  deletePatient: ( id:string ) => void;
 }
 
 
@@ -22,4 +23,9 @@ export const usePatientStore = create<PatientState>( (set) => ({
       patients: [...state.patients, createPatient(data)],
     }));
   },
+  deletePatient: ( id ) => {
+    set( state => ({
+      patients: [...state.patients.filter( patient => patient.id !== id )],
+    }));
+  }
 }));
